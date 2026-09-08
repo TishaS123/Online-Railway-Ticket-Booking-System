@@ -1,0 +1,15 @@
+stripe:
+ secret-key: ${STRIPE_SECRET_KEY}
+ 
+server:
+ port: 8005
+ 
+eureka:
+ client:
+  fetch-registry: true
+  register-with-eureka: true
+  service-url:
+   defaultZone: http://localhost:8761/eureka/
+ instance:
+  hostname: localhost
+  

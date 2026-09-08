@@ -1,0 +1,11 @@
+.ticket-container {
+  margin-top: 100px; /* Adjust based on actual header height */
+  padding: 30px;
+  background: linear-gradient(135deg, #f5e9d3, #fdf6e3);
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-repeat: repeat;
+  border: 4px double #333;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  font-family: 'Georgia', serif;
+}

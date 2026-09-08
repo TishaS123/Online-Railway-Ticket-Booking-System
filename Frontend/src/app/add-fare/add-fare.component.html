@@ -1,0 +1,47 @@
+<!-- Add Fare Form (Styled with Add Fare Card Colors) -->
+<div style="display: flex; margin-top: 80PX ; justify-content: center; align-items: center; padding: 30px 20px; background: #f4f6f8; min-height: calc(100vh - 140px); font-family: 'Segoe UI', sans-serif;">
+  <form (ngSubmit)="addFare()" 
+        style="width: 100%; max-width: 500px; background: linear-gradient(135deg, #a1c4fd, #c2e9fb); padding: 30px 25px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); color: #2c3e50;">
+
+    <h2 style="text-align: center; margin-bottom: 25px; font-weight: 600; font-size: 22px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+      💰 Add Fare Details
+    </h2>
+
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Source</label>
+      <input type="text" name="source" [(ngModel)]="fare.source" required #sourceInput="ngModel"
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; color: #2c3e50; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+          <div *ngIf="sourceInput.invalid && sourceInput.touched" style="color: red;">Source is required.</div>
+    </div>
+
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Destination</label>
+      <input type="text" name="destination" [(ngModel)]="fare.destination" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; color: #2c3e50; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+    </div>
+
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Class Type</label>
+      <select name="classType" [(ngModel)]="fare.classType" required
+              style="width: 490px; padding: 12px; border: none; border-radius: 10px; background: #fff; color: #2c3e50; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;">
+        <option value="" disabled selected>Select Class Type</option>
+        <option value="SLEEPER">SLEEPER</option>
+        <option value="AC1">AC1</option>
+        <option value="AC2">AC2</option>
+        <option value="AC3">AC3</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 25px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Amount (₹)</label>
+      <input type="number" name="amount" [(ngModel)]="fare.amount" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; color: #2c3e50; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+    </div>
+
+    <button type="submit"
+        style="display: block; margin: 0 auto; width: 180px; padding: 14px; background-color: #27ae60; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background 0.3s;">
+  ➕ Add Fare
+</button>
+
+  </form>
+</div>

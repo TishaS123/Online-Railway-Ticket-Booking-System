@@ -1,0 +1,25 @@
+<div style="margin-top: 100px;">
+    <table style="width: 90%; margin: 40px auto; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+  <thead style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+    <tr>
+      <th style="padding: 15px; text-align: center;">Seat Id</th>
+      <th style="padding: 15px; text-align: center;">Seat Number</th>
+      <th style="padding: 15px; text-align: center;">Seat Status</th>
+      <th style="padding: 15px; text-align: center;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let seat of seatList" style="border-bottom: 1px solid #ddd; transition: background-color 0.3s;" 
+        onmouseover="this.style.backgroundColor='#f3f0ff'" 
+        onmouseout="this.style.backgroundColor='white'">
+      <td style="padding: 12px; text-align: center; color: #333;">{{seat.id}}</td>
+      <td style="padding: 12px; text-align: center; color: #333;">{{seat.seatNumber}}</td>
+      <td style="padding: 12px; text-align: center; color: #333;">{{seat.status}}</td>
+      <td style="padding: 12px; text-align: center;">
+        <button style="background-color: #667eea; color: white; border: none; padding: 6px 12px; border-radius: 6px; margin-right: 6px; cursor: pointer;" (click)="edit(seat)" >✏️ Edit</button>
+        <button style="background-color: #e53935; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer;" (click)="delete(seat)" >🗑️ Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

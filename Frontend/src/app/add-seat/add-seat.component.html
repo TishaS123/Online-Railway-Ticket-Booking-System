@@ -1,0 +1,33 @@
+<form (ngSubmit)="addSeat()"
+      style="max-width: 600px; margin: 40px auto; padding: 35px; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-family: 'Segoe UI', sans-serif; color: #2c3e50;">
+  
+  <h2 style="text-align: center; color: #ffffff; margin-bottom: 25px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">🚃 Add Seat</h2>
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Seat Number: </label>
+  <input type="text" name="seatNumber" [(ngModel)]="seat.seatNumber" required
+         style="width: 100%; padding: 12px; margin-bottom: 16px; border: none; border-radius: 8px; background: #ffffff; width: 510px" />
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Seat Status:</label>
+  <select name="seatStatus" [(ngModel)]="seat.status" required
+          style="width: 100%; padding: 12px; margin-bottom: 16px; border: none; border-radius: 8px; background: #ffffff;">
+    <option value="" disabled selected>Select Class Type</option>
+    <option value="AVAILABLE">AVAILABLE</option>
+    <option value="BOOKED">BOOKED</option>
+    
+  </select>
+
+  
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Select Coach ID:</label>
+  <select name="coachId" [(ngModel)]="seat.coachId" required
+          style="width: 100%; padding: 12px; margin-bottom: 24px; border: none; border-radius: 8px; background: #ffffff;">
+    <option value="" disabled selected>Select Coach</option>
+    <option *ngFor="let coach of coachList" [value]="coach.coachId">
+      {{ coach.coachId }}
+    </option>
+  </select>
+
+  <button type="submit"
+          style="width: 200px; padding: 14px; background-color: #2ecc71; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin: auto;">
+    ➕ Add Seat
+  </button>
+</form>

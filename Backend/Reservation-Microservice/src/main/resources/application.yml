@@ -1,0 +1,68 @@
+jwt:
+ secret-key:12345678901234567890123456789012
+ 
+ 
+resilience4j:
+  circuitbreaker:
+    instances:
+
+      paymentService:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 20
+        minimumNumberOfCalls: 10
+
+        failureRateThreshold: 50
+
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 3s
+
+        waitDurationInOpenState: 10s
+
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+      trainService:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 20
+        minimumNumberOfCalls: 10
+
+        failureRateThreshold: 50
+
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 2s
+
+        waitDurationInOpenState: 10s
+
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+
+          Payment-Gateway:
+            connectTimeout: 2000
+            readTimeout: 3000
+
+          Train-Microservice:
+            connectTimeout: 2000
+            readTimeout: 3000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - metrics
+          - prometheus
+
+  endpoint:
+    health:
+      show-details: always

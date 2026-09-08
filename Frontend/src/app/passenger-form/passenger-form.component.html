@@ -1,0 +1,60 @@
+<!-- <div class="form-container">
+  <h2>Enter Passenger Details</h2>
+
+  <form (ngSubmit)="submitPassengers()">
+    <div *ngFor="let p of passengers; let i = index" class="passenger-card">
+      <h4>Passenger {{ i + 1 }}</h4>
+
+      <input [(ngModel)]="p.passengerName" name="name{{i}}" placeholder="Name" required />
+      <input [(ngModel)]="p.age" name="age{{i}}" type="number" placeholder="Age" required />
+      <input [(ngModel)]="p.gender" name="gender{{i}}" placeholder="Gender" required />
+      <input [(ngModel)]="p.email" name="email{{i}}" type="email" placeholder="Email" required />
+
+      <button type="button" (click)="removePassenger(i)" *ngIf="passengers.length > 1" style="margin-top: 5px;">
+        Remove
+      </button>
+    </div>
+
+    <button type="button" (click)="addPassenger()" style="margin-top: 10px;">Add Passenger</button>
+    <button type="submit" style="margin-top: 10px;">Submit & Book</button>
+  </form>
+</div> -->
+
+
+<!-- <div style="margin-top:120px auto 0 auto; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;"> -->
+
+<div class="passenger-form-container">
+
+  <h2 style="text-align: center; color: #333;">Enter Passenger Details</h2>
+
+  <form (ngSubmit)="submitPassengers()">
+    <div *ngFor="let p of passengers; let i = index" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 6px; background-color: #fff;">
+      <h4 style="margin-bottom: 10px; color: #555;">Passenger {{ i + 1 }}</h4>
+
+      <input [(ngModel)]="p.passengerName" name="name{{i}}" placeholder="Name" required
+             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+      <input [(ngModel)]="p.age" name="age{{i}}" type="number" placeholder="Age" required
+             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+      <input [(ngModel)]="p.gender" name="gender{{i}}" placeholder="Gender" required
+             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+      <input [(ngModel)]="p.email" name="email{{i}}" type="email" placeholder="Email" required
+             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+
+      <button type="button" (click)="removePassenger(i)" *ngIf="passengers.length > 1"
+              style="background-color: #e74c3c; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+        Remove
+      </button>
+    </div>
+
+    <button type="button" (click)="addPassenger()"
+            style="background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+      Add Passenger
+    </button>
+    <button type="submit"
+            style="background-color: #2ecc71; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">
+      Submit & Book
+    </button>
+  </form>
+</div>
+
+

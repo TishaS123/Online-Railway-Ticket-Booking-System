@@ -1,0 +1,89 @@
+<!-- <form (ngSubmit)="addTrain()">
+    <label>Train Name: </label>
+    <input type="text" name="trainName" [(ngModel)]="train.trainName" required />
+    <label>Source: </label>
+    <input type="text" name="source" [(ngModel)]="train.source" required />
+    <label>Destination: </label>
+    <input type="text" name="destination" [(ngModel)]="train.destination" required />
+    <label>Departure Time: </label>
+    <input type="time" name="departureTime" [(ngModel)]="train.departureTime" required />
+    <label>Arrival Time: </label>
+    <input type="time" name="arrivalTime" [(ngModel)]="train.arrivalTime" required />
+    <label>Date: </label>
+    <input type="date" name="date" [(ngModel)]="train.date" required />
+
+    <button type="submit">Add Train</button>
+</form> -->
+
+
+<!-- Add Train Form with Validation -->
+<div style="display: flex; justify-content: center; align-items: center; padding: 30px 20px; background: #f4f6f8; min-height: calc(100vh - 140px); font-family: 'Segoe UI', sans-serif; margin-top: 80px;">
+  <form #trainForm="ngForm" (ngSubmit)="addTrain()" 
+        style="width: 100%; max-width: 500px; background: linear-gradient(135deg, #f6d365, #fda085); padding: 30px 25px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); color: #2c3e50;">
+
+    <h2 style="text-align: center; margin-bottom: 25px; font-weight: 600; font-size: 22px;">🚆 Add New Train</h2>
+
+    <!-- Train Name -->
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Train Name</label>
+      <input type="text" name="trainName" [(ngModel)]="train.trainName" #trainName="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="trainName.invalid && trainName.touched" style="color: red; font-size: 13px;">Train name is required.</div>
+    </div>
+
+    <!-- Source -->
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Source</label>
+      <input type="text" name="source" [(ngModel)]="train.source" #source="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="source.invalid && source.touched" style="color: red; font-size: 13px;">Source is required.</div>
+    </div>
+
+    <!-- Destination -->
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Destination</label>
+      <input type="text" name="destination" [(ngModel)]="train.destination" #destination="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="destination.invalid && destination.touched" style="color: red; font-size: 13px;">Destination is required.</div>
+    </div>
+
+    <!-- Departure Time -->
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Departure Time</label>
+      <input type="time" name="departureTime" [(ngModel)]="train.departureTime" #departureTime="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="departureTime.invalid && departureTime.touched" style="color: red; font-size: 13px;">Departure time is required.</div>
+    </div>
+
+    <!-- Arrival Time -->
+    <div style="margin-bottom: 18px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Arrival Time</label>
+      <input type="time" name="arrivalTime" [(ngModel)]="train.arrivalTime" #arrivalTime="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="arrivalTime.invalid && arrivalTime.touched" style="color: red; font-size: 13px;">Arrival time is required.</div>
+    </div>
+
+    <!-- Date -->
+    <div style="margin-bottom: 25px;">
+      <label style="display: block; margin-bottom: 6px; font-weight: 600;">Date</label>
+      <input type="date" name="date" [(ngModel)]="train.date" #date="ngModel" required
+             style="width: 470px; padding: 12px; border: none; border-radius: 10px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 15px;" />
+      <div *ngIf="date.invalid && date.touched" style="color: red; font-size: 13px;">Date is required.</div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="trainForm.invalid"
+            style=" display: block; margin: 0 auto; width: 180px; padding: 14px; background-color: #27ae60; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background 0.3s;">
+      ➕ Add Train
+    </button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+

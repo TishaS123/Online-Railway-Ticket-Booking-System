@@ -1,0 +1,46 @@
+<form (ngSubmit)="addCoach()"
+      style="max-width: 600px; margin: 40px auto; padding: 35px; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-family: 'Segoe UI', sans-serif; color: #2c3e50;">
+  
+  <h2 style="text-align: center; color: #ffffff; margin-bottom: 25px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">🚃 Add Coach</h2>
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Coach Number:</label>
+  <input type="text" name="coachNumber" [(ngModel)]="coach.coachNumber" required #coachnumberInput="ngModel"
+         style="width: 100%; padding: 12px; margin-bottom: 16px; border: none; border-radius: 8px; background: #ffffff;" />
+       <div *ngIf="coachnumberInput.invalid && coachnumberInput.touched" style="color: red;">Coach Number is Required.</div>
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Class Type:</label>
+  <select name="classType" [(ngModel)]="coach.classType" required #classtypeInput="ngModel"
+          style="width: 100%; padding: 12px; margin-bottom: 16px; border: none; border-radius: 8px; background: #ffffff;">
+    <option value="" disabled selected>Select Class Type</option>
+    <option value="SLEEPER">SLEEPER</option>
+    <option value="AC1">AC1</option>
+    <option value="AC2">AC2</option>
+    <option value="AC3">AC3</option>
+  </select>
+  <div *ngIf="classtypeInput.invalid && classtypeInput.touched" style="color: red;">Class Type is Required.</div>
+
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Total Seats:</label>
+  <input type="number" name="totalSeats" [(ngModel)]="coach.totalSeats" required min="1" #totalseatsInput="ngModel"
+         style="width: 100%; padding: 12px; margin-bottom: 16px; border: none; border-radius: 8px; background: #ffffff;" />
+    <div *ngIf="totalseatsInput.invalid && totalseatsInput.touched" style="color: red;">Total Seats is Required.</div>
+
+
+
+  <label style="display: block; margin-bottom: 6px; font-weight: bold;">Select Train ID:</label>
+  <select name="trainId" [(ngModel)]="selectedTrainId" required #selectedtrainidInput="ngModel"
+          style="width: 100%; padding: 12px; margin-bottom: 24px; border: none; border-radius: 8px; background: #ffffff;">
+    <option value="" disabled selected>Select Train</option>
+    <option *ngFor="let train of trainList" [value]="train.trainId">
+      {{ train.trainName }} ({{ train.trainId }})
+    </option>
+  </select>
+      <div *ngIf="selectedtrainidInput.invalid && selectedtrainidInput.touched" style="color: red;">Please select train id.</div>
+
+
+  
+  <button type="submit"
+          style="width: 100%; padding: 14px; background-color: #2ecc71; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;">
+    ➕ Add Coach
+  </button>
+</form>

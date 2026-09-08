@@ -1,0 +1,130 @@
+<!-- <div style="background-image: url(https://th.bing.com/th/id/OIP.9JNrvip8nqFLXHUWG_rLmAHaE8?w=264&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3);">
+  <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+  <input formControlName="source" placeholder="Source" />
+  <input formControlName="destination" placeholder="Destination" />
+  <input formControlName="classType" placeholder="Class Type" />
+  <input formControlName="date" type="date" />
+  <button type="submit" [disabled]="searchForm.invalid">Search</button>
+</form>
+</div> -->
+
+<!-- <div style="
+  background-image: url('https://th.bing.com/th/id/OIP.9JNrvip8nqFLXHUWG_rLmAHaE8?w=264&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3');
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+">
+  <form [formGroup]="searchForm" (ngSubmit)="submitForm()" style="
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+  ">
+    <input formControlName="source" placeholder="Source" style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    " />
+    <input formControlName="destination" placeholder="Destination" style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    " />
+    <input formControlName="classType" placeholder="Class Type" style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    " />
+    <input formControlName="date" type="date" style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    " />
+    <button type="submit" [disabled]="searchForm.invalid" style="
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    ">
+      Search
+    </button>
+  </form>
+</div> -->
+
+
+
+<!-- Header -->
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+                background: linear-gradient(135deg, #667eea, #764ba2); 
+                padding: 20px 30px; color: white; font-family: 'Segoe UI', sans-serif; 
+                display: flex; justify-content: space-between; align-items: center; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+  <div style="font-size: 22px; font-weight: bold;">
+    🚄 MyRail 
+  </div>
+
+  <button *ngIf="isLoggedIn" (click)="showMyReservations()"
+          style="background: transparent; border: 2px solid white; color: white; padding: 8px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;">
+    🔓 MyReservations
+  </button>
+
+  <!-- Logout button shown only if user is logged in -->
+  <button *ngIf="isLoggedIn" (click)="logout()"
+          style="background: transparent; border: 2px solid white; color: white; padding: 8px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;">
+    🔓 Logout
+  </button>
+</header>
+
+
+<!-- Search Form -->
+<div *ngIf="showSearchForm && !childRouteActive" style="margin-top: 80px;">
+  <div style="height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; background: #f4f6f8; font-family: 'Segoe UI', sans-serif;">
+    <form [formGroup]="searchForm" (ngSubmit)="submitForm()" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb); padding: 40px 30px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 400px; transition: all 0.3s ease-in-out; color: #2c3e50;">
+      <h2 style="text-align: center; margin-bottom: 10px; font-weight: 600;">🚄 Search Trains</h2>
+
+      <input formControlName="source" placeholder="Source Station" style="padding: 14px; border: none; border-radius: 10px; font-size: 15px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);" />
+      <input formControlName="destination" placeholder="Destination Station" style="padding: 14px; border: none; border-radius: 10px; font-size: 15px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);" />
+      <input formControlName="classType" placeholder="Class (e.g. Sleeper, 3AC)" style="padding: 14px; border: none; border-radius: 10px; font-size: 15px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);" />
+      <input formControlName="date" type="date" style="padding: 14px; border: none; border-radius: 10px; font-size: 15px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);" />
+
+      <button type="submit" [disabled]="searchForm.invalid" style="padding: 14px; background-color: #27ae60; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s ease; width: 180px; margin: 0 auto;">
+        🔍 Search
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Train List Component -->
+<!-- <div *ngIf="!showSearchForm">
+  <router-outlet></router-outlet>
+</div> -->
+<router-outlet (activate)="onChildActivate()" (deactivate)="onChildDeactivate()"></router-outlet>
+
+
+<footer
+  *ngIf="showFooter"
+  style=" bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-align: center; padding: 16px 30px; font-size: 14px; box-shadow: 0 -2px 8px rgba(0,0,0,0.1);">
+  © {{currentYear}} MyRail. Thank you for choosing us for your journey. Wishing you safe and happy travels! 🚆✨
+</footer>
+
+
+
+
+
+
+

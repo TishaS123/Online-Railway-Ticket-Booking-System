@@ -1,0 +1,28 @@
+<div style="max-width: 600px; margin: 100px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
+  <h2 style="text-align: center; color: #667eea; margin-bottom: 20px;">✏️ Edit Train</h2>
+
+  <form [formGroup]="trainForm" (ngSubmit)="updateTrain()">
+    <label style="display: block; margin-bottom: 10px;">Train Name</label>
+    <input formControlName="source" type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;" />
+
+    <label style="display: block; margin-bottom: 10px;">Source</label>
+    <input formControlName="source" type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;" />
+
+    <label style="display: block; margin-bottom: 10px;">Destination</label>
+    <input formControlName="destination" type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;" />
+
+    <label style="display: block; margin-bottom: 10px;">Arrival Time</label>
+    <input formControlName="classType" type="time" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;" />
+
+    <label style="display: block; margin-bottom: 10px;">Departure Time</label>
+    <input formControlName="amount" type="time" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 30px;" />
+
+    <label style="display: block; margin-bottom: 10px;">Date</label>
+    <input formControlName="source" type="date" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;" />
+
+    <button type="submit" [disabled]="trainForm.invalid"
+      style="width: 100%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+      💾 Update Train
+    </button>
+  </form>
+</div>

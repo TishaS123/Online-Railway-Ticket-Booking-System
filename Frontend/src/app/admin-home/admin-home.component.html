@@ -1,0 +1,86 @@
+ <!-- <nav style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <div style="font-size: 20px; font-weight: bold; color: white;">
+    MyApp
+  </div>
+  <div>
+    <a routerLink="/addTrain" style="margin-right: 20px; color: white; text-decoration: none; font-weight: 500;">Add Train</a>
+    <a routerLink="/addFare" style="margin-right: 20px; color: white; text-decoration: none; font-weight: 500;">Add Fare</a>
+    <a routerLink="/addSeat" style="margin-right: 20px; color: white; text-decoration: none; font-weight: 500;">Add Seat</a>
+    <a routerLink="/addCoach" style="margin-right: 20px; color: white; text-decoration: none; font-weight: 500;">Add Coach</a>
+    <a routerLink="/reservations" style="margin-right: 20px; color: white; text-decoration: none; font-weight: 500;">Reservations</a>
+
+
+  </div>
+</nav>  -->
+
+
+
+<!-- Header Bar -->
+
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;background: linear-gradient(135deg, #667eea, #764ba2); padding: 20px 30px; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+  <div style="font-size: 22px; font-weight: bold;">🚄 MyRail</div>
+  <button style="background-color: #ffffff33; border: none; color: white; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#ffffff55'" 
+          onmouseout="this.style.backgroundColor='#ffffff33'" (click)="logout()">
+    🔓 Logout
+  </button>
+</header>
+<div *ngIf="!childRouteActive" style="margin-top: 80px;">
+
+<!-- Welcome Message -->
+<div style="background-color: #f0f2f5; padding: 20px 30px; font-family: 'Segoe UI', sans-serif; font-size: 18px; color: #333; text-align: center;">
+  👋 Welcome back, Admin! Hope you're having a productive day.
+</div>
+
+<!-- Card Styles -->
+<style>
+  .card-link {
+    background: linear-gradient(135deg, #f6d365, #fda085); /* default gradient */
+    padding: 30px 40px;
+    border-radius: 16px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    display: inline-block;
+    width: 220px;
+    text-align: center;
+  }
+
+  .card-link:hover {
+    transform: scale(1.05);
+  }
+
+  .add-train { background: linear-gradient(135deg, #f6d365, #fda085); }
+  .add-fare { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+  .add-seat { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+  .add-coach { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+  .reservations { background: linear-gradient(135deg, #fddb92, #d1fdff); }
+</style>
+
+<!-- Full-Page Card Navbar -->
+<nav style="background: #f4f6f8; padding: 40px 30px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; height: calc(100vh - 140px); font-family: 'Segoe UI', sans-serif;">
+  <a routerLink="/admin-home/addTrain" class="card-link add-train">🚆 Add Train</a>
+  <a routerLink="/admin-home/addFare" class="card-link add-fare">💰 Add Fare</a>
+  <a routerLink="/admin-home/addSeat" class="card-link add-seat">🪑 Add Seat</a>
+  <a routerLink="/admin-home/addCoach" class="card-link add-coach">🚃 Add Coach</a>
+  <a routerLink="/admin-home/reservations" class="card-link reservations">📋 Reservations</a>
+  <a routerLink="/admin-home/manage-train-details" class="card-link add-train">🚆 Manage Train Details</a>
+  <a routerLink="/admin-home/manage-fare-details" class="card-link add-fare">💰 Manage Fare Details</a>
+  <a routerLink="/admin-home/manage-seat-details" class="card-link add-seat">🪑 Manage Seat Details</a>
+  <a routerLink="/admin-home/manage-coach-details" class="card-link add-coach">🚃 Manage Coach Details</a>
+  <a routerLink="/admin-home/passenger-list" class="card-link add-coach">Passenger Details</a>
+</nav>
+</div>
+
+
+
+<router-outlet (activate)="onChildActivate()" (deactivate)="onChildDeactivate()"></router-outlet>
+
+<!-- Footer -->
+<footer style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-align: center; padding: 16px 30px; font-family: 'Segoe UI', sans-serif; font-size: 14px; box-shadow: 0 -2px 8px rgba(0,0,0,0.1);">
+  © 2025 MyRail Admin Portal. All rights reserved. | Built with ❤️ for seamless railway management.
+</footer>
+

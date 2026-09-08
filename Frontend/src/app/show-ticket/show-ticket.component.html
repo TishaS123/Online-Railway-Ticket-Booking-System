@@ -1,0 +1,127 @@
+<!-- <div style="max-width: 600px; margin: 30px auto; padding: 20px; border: 2px dashed #4a90e2; border-radius: 12px; background: #fefefe; font-family: 'Segoe UI', sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; color: #4a90e2; margin-bottom: 20px;">🎫 Train Ticket</h2>
+
+  <div style="margin-bottom: 15px;">
+    <p><strong>Ticket No:</strong> {{ ticket.ticketNo }}</p>
+    <p><strong>PNR:</strong> {{ ticket.pnrNo }}</p>
+    <p><strong>Status:</strong> <span [style.color]="ticket.status === 'CONFIRMED' ? 'green' : 'red'">{{ ticket.status }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p><strong>Train:</strong> {{ ticket.trainName }} (ID: {{ ticket.trainId }})</p>
+    <p><strong>Date:</strong> {{ ticket.date }}</p>
+    <p><strong>Class:</strong> {{ ticket.classType }} | <strong>Coach ID:</strong> {{ ticket.coachId }}</p>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p><strong>From:</strong> {{ ticket.source }}</p>
+    <p><strong>To:</strong> {{ ticket.destination }}</p>
+    <p><strong>Departure:</strong> {{ ticket.departureTime }} | <strong>Arrival:</strong> {{ ticket.arrivalTime }}</p>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p><strong>Total Amount:</strong> ₹{{ ticket.totalAmount }}</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="color: #4a90e2; margin-bottom: 10px;">👥 Passengers</h3>
+    <div *ngFor="let p of ticket.passengers" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; background-color: #f9f9f9;">
+      <p><strong>Name:</strong> {{ p.passengerName }}</p>
+      <p><strong>Age:</strong> {{ p.age }} | <strong>Gender:</strong> {{ p.gender }}</p>
+      <p><strong>Email:</strong> {{ p.email }}</p>
+      <p><strong>Seat:</strong> {{ p.seatNumber }} ({{ p.coachNumber }})</p>
+    </div>
+  </div>
+</div>
+
+
+<div style="text-align: center; margin-top: 20px;">
+  <button (click)="downloadPDF()" style="margin-right: 10px;">📄 Download PDF</button>
+  <button (click)="printTicket()">🖨️ Print Ticket</button>
+</div> -->
+
+
+<div class="ticket-wrapper" style="padding-top: 120px; padding-bottom: 80px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 30px; border: 2px solid #333; font-family: 'Georgia', serif; background: linear-gradient(135deg, #f5e9d3, #fdf6e3); box-shadow: 0 0 25px rgba(0,0,0,0.3); border-radius: 12px; background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); background-repeat: repeat;">
+    
+    <!-- Ticket Header -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h1 style="margin: 0; font-size: 32px; letter-spacing: 2px; color: #2c3e50;">🎟️ INDIAN RAILWAYS</h1>
+      <h2 style="margin: 5px 0 20px; font-size: 20px; font-style: italic; color: #7f8c8d;">Golden Express Line</h2>
+      <p style="font-size: 14px; color: #555;">Electronic Reservation Slip</p>
+    </div>
+
+    <!-- Ticket Info -->
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div>
+        <strong>PNR:</strong> {{ ticket.pnrNo }}<br>
+        <strong>Train:</strong> {{ ticket.trainId }} - {{ ticket.trainName }}<br>
+        <strong>Date:</strong> {{ ticket.date }}<br>
+        <strong>Class:</strong> {{ ticket.classType }}
+      </div>
+      <div>
+        <strong>From:</strong> {{ ticket.source }}<br>
+        <strong>To:</strong> {{ ticket.destination }}<br>
+        <strong>Departs:</strong> {{ ticket.departureTime }}<br>
+        <strong>Arrives:</strong> {{ ticket.arrivalTime }}
+      </div>
+    </div>
+
+    <!-- Fare and Status -->
+    <div style="border-top: 2px dashed #999; padding-top: 15px; margin-bottom: 15px;">
+      <strong>Booking Date:</strong> {{ ticket.date || '2025-06-17' }}<br>
+      <strong>Total Fare:</strong> ₹{{ ticket.totalAmount }}<br>
+      <strong>Status:</strong> 
+      <span style="color: {{ ticket.status === 'CONFIRMED' ? 'green' : 'red' }}; font-weight: bold;">
+        {{ ticket.status }}
+      </span>
+    </div>
+
+    <!-- Passenger Table -->
+    <div style="margin-bottom: 20px;">
+      <strong>Passenger Manifest:</strong>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px;">
+        <thead>
+          <tr style="border-bottom: 2px solid #000;">
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Seat</th>
+            <th>Coach</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of ticket.passengers; let i = index" style="border-bottom: 1px dashed #ccc;">
+            <td>{{ i + 1 }}</td>
+            <td>{{ p.passengerName }}</td>
+            <td>{{ p.age }}</td>
+            <td>{{ p.gender }}</td>
+            <td>{{ p.seatNumber }}</td>
+            <td>{{ p.coachNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer Note -->
+    <div style="font-size: 12px; color: #555; border-top: 1px dotted #aaa; padding-top: 10px;">
+      <p><strong>🎫 Note:</strong> Carry a valid ID proof. This ticket is your passport to a cinematic journey.</p>
+      <p>📞 For help, dial 139 or visit <a href="https://www.cuydgy.co.in" target="_blank">www.irctc.co.in</a></p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="text-align: center; margin-top: 20px;">
+      <!-- <button (click)="downloadPDF()" style="padding: 10px 20px; font-size: 14px;">📄 Download PDF</button> -->
+      <!-- <button (click)="printTicket()" style="padding: 10px 20px; font-size: 14px;">🖨️ Print Ticket</button> -->
+      <button (click)="goBack()" style="padding: 10px 20px; font-size: 14px;">🔙 Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
