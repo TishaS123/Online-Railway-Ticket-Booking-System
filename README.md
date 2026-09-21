@@ -1,4 +1,4 @@
-<font size=”5″># 🚆 Online Railway Ticket Booking System</font>
+# 🚆 Online Railway Ticket Booking System
 
 A production-oriented **microservices-based railway ticket booking platform** built with Java 21 and Spring Boot.
 
