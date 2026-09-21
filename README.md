@@ -63,7 +63,7 @@ The primary engineering goal of the project is not just CRUD-based ticket bookin
                          ┌──────────────────────┐
                          │       MySQL          │
                          └──────────────────────┘
-# Service Responsibilities
+**Service Responsibilities**
 | Service                 | Responsibility                                        |
 | ----------------------- | ----------------------------------------------------- |
 | **API Gateway**         | Central entry point and service routing               |
@@ -74,8 +74,8 @@ The primary engineering goal of the project is not just CRUD-based ticket bookin
 | **Eureka Server**       | Service discovery                                     |
 | **Angular Frontend**    | User-facing booking application                       |
 
-🧰 # Technology Stack
-# Backend
+🧰 **Technology Stack**
+**Backend**
 Java 21
 Spring Boot
 Spring Security
