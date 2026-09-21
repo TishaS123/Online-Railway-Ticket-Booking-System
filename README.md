@@ -63,7 +63,7 @@ The primary engineering goal of the project is not just CRUD-based ticket bookin
                          ┌──────────────────────┐
                          │       MySQL          │
                          └──────────────────────┘
-**Service Responsibilities**
+__Service Responsibilities__
 | Service                 | Responsibility                                        |
 | ----------------------- | ----------------------------------------------------- |
 | **API Gateway**         | Central entry point and service routing               |
